@@ -13,10 +13,7 @@ RUN npm ci
 COPY . .
 
 # Build the project
-RUN node ace build --production
-
-# Create production build folder
-RUN mkdir -p /app/build
+RUN node ace build
 
 # Expose the port the app runs on
 EXPOSE 3333
