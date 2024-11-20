@@ -32,3 +32,7 @@ router
     router.post('/logout', [RegistersController, 'logout'])
   })
   .prefix('api')
+
+router.get('/health', async ({ response }) => {
+  return response.status(200).send({ status: 'healthy' })
+})

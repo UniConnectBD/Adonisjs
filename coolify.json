@@ -1,0 +1,8 @@
+{
+  "name": "uniconnectbd",
+  "port": 3333,
+  "buildCommand": "npm run build",
+  "startCommand": "npm run start",
+  "healthCheckPath": "/health",
+  "healthCheckTimeout": 10
+} 
