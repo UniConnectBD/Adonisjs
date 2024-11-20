@@ -19,4 +19,4 @@ RUN node ace build
 EXPOSE 3333
 
 # Start the server using the built application
-CMD ["node", "build/server.js"]
+CMD ["node", "bin/server.js"]
