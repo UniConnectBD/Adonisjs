@@ -4,17 +4,22 @@ WORKDIR /app
 
 # Copy package files
 COPY package*.json ./
+COPY tsconfig*.json ./
 
-# Install production dependencies
+# Install dependencies with exact versions
 RUN npm ci
 
 # Copy project files
 COPY . .
 
 # Build the project
-RUN npm run build
+RUN node ace build --production
 
+# Create production build folder
+RUN mkdir -p /app/build
+
+# Expose the port the app runs on
 EXPOSE 3333
 
-# Start the server from the bin directory
-CMD ["node", "bin/server.ts"]
+# Start the server using the built application
+CMD ["node", "build/server.js"]
