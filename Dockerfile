@@ -16,6 +16,5 @@ RUN npm run build
 
 EXPOSE 3333
 
-# Start the server from the build directory
-WORKDIR /app/build
-CMD ["node", "bin/server.js"]
+# Start the server from the bin directory
+CMD ["node", "bin/server.ts"]
