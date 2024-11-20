@@ -18,5 +18,8 @@ RUN node ace build
 # Expose the port the app runs on
 EXPOSE 3333
 
+# Change to the build directory
+WORKDIR /app/build
+
 # Start the server using the built application
 CMD ["node", "bin/server.js"]
