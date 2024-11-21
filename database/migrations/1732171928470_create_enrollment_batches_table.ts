@@ -6,7 +6,7 @@ export default class extends BaseSchema {
   async up() {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id').notNullable()
-      table.integer('university_id').notNullable().unsigned().references('university.id')
+      table.integer('university_id').notNullable().unsigned().references('universities.id')
       table.dateTime('academic_year').notNullable()
       table.string('semester').notNullable()
       table.dateTime('enrollment_start').notNullable()

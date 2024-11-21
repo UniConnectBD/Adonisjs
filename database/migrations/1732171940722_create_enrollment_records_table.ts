@@ -6,12 +6,13 @@ export default class extends BaseSchema {
   async up() {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id').notNullable()
-      table.integer('enrollment_batch_id').unsigned().notNullable().references('enrollmentBatch.id')
       table
-        .integer('student_uni_id')
-        .notNullable()
+        .integer('enrollment_batch_id')
         .unsigned()
-        .references('studentProfile.student_uni_id')
+        .notNullable()
+        .references('enrollment_batches.id')
+      table.integer('student_uni_id').notNullable().unsigned()
+
       table.string('email').notNullable
       table.string('country_code').notNullable()
       table.string('phone').notNullable()
