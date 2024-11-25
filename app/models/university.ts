@@ -1,5 +1,7 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column, computed } from '@adonisjs/lucid/orm'
+import { BaseModel, column, computed, hasMany, hasOne } from '@adonisjs/lucid/orm'
+import UserRole from './user_role.js'
+import type { HasMany } from '@adonisjs/lucid/types/relations'
 
 export default class University extends BaseModel {
   @column({ isPrimary: true })
@@ -26,6 +28,9 @@ export default class University extends BaseModel {
     serialize: (value: DateTime) => value.toFormat('yyyy LLL dd'),
   })
   declare updatedAt: DateTime
+
+  @hasMany(() => UserRole)
+  declare userrole: HasMany<typeof UserRole>
   @computed()
   get fulName() {
     return `minhaz`
