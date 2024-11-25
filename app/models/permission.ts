@@ -1,5 +1,7 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column } from '@adonisjs/lucid/orm'
+import { BaseModel, column, hasOne } from '@adonisjs/lucid/orm'
+import RolePermission from './role_permission.js'
+import type { HasOne } from '@adonisjs/lucid/types/relations'
 
 export default class Permission extends BaseModel {
   @column({ isPrimary: true })
@@ -16,4 +18,9 @@ export default class Permission extends BaseModel {
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime
+
+  @hasOne(() => RolePermission, {
+    foreignKey: 'permission_id',
+  })
+  declare rolepermission: HasOne<typeof RolePermission>
 }
